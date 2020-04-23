@@ -1,3 +1,5 @@
+import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.Stack;
 
 // LIFO data structure
@@ -59,5 +61,42 @@ public class StackExample {
 			System.out.println();
 		}
 		
+		// Iteration
+		// forEach()
+		names.forEach(name -> {
+			System.out.println(name);
+		});
+		System.out.println();
+		
+		// iterator()
+		Iterator<String> nameIterator = names.iterator();
+		while(nameIterator.hasNext()) {
+			String name = nameIterator.next();
+			System.out.println(name);
+		}
+		System.out.println();
+		
+		// forEachRemaining()
+		nameIterator = names.iterator();
+		nameIterator.forEachRemaining(name -> {
+			System.out.println(name);
+		});
+		System.out.println();
+		
+		// iterate a stack from TOP or BOTTOM using listIterator()
+		ListIterator<String> namesListIterator = names.listIterator(names.size());
+		System.out.println("TOP to BOTTOM");
+		while(namesListIterator.hasPrevious()) {
+			String name = namesListIterator.previous();
+			System.out.println(name);
+		}
+		System.out.println();
+		
+		System.out.println("BOTTOM to TOP");
+		while(namesListIterator.hasNext()) {
+			String name = namesListIterator.next();
+			System.out.println(name);
+		}
+		System.out.println();
 	}
 }
